@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 const Menu = () => (
   <Container>
-    {dishes && dishes.map((dish) => <SingleDish dish={dish} key={dish.id} />)}
+    {dishes && dishes.length >= 0 ? dishes.map((dish) => <SingleDish dish={dish} key={dish.id} />) :  <h2>Work in Progress</h2> }
   </Container>
 );
 export default Menu;

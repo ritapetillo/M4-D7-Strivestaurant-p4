@@ -27,31 +27,31 @@ class Reservations extends React.Component {
     render() {
 
         console.log('IN THE RENDER METHOD')
-
+const { header } = this.props
         return (
-            <Container>
-                <div className="mb-5">
-                    <h2>RESERVATIONS</h2>
-                    {
-                        this.state.loading && (
-                            <div className="font-bold d-flex justify-content-center">
-                                <span>Feching reservations</span>
-                                <Spinner animation="border" variant="success" />
-                            </div>
-                        )
-                    }
-                    {this.state.reservations.map((reservation, index) => (
-                        <ListGroup key={index}>
-                            <ListGroup.Item>
-                                Name: {reservation.name}, for {reservation.numberOfPersons}
-                            at {reservation.dateTime}
-                            </ListGroup.Item>
-                        </ListGroup>
-                    ))}
-                    <ReservationForm />
+            
+          <Container>
+            <div className="mb-5">
+                    <h2>{header ? header: 'RESERVATIONS'}</h2>
+              <ReservationForm />
+
+              {this.state.loading && (
+                <div className="font-bold d-flex justify-content-center">
+                  <span>Feching reservations</span>
+                  <Spinner animation="border" variant="success" />
                 </div>
-            </Container>
-        )
+              )}
+              {this.state.reservations.map((reservation, index) => (
+                <ListGroup key={index}>
+                  <ListGroup.Item>
+                    Name: {reservation.name}, for {reservation.numberOfPersons}
+                    at {reservation.dateTime}
+                  </ListGroup.Item>
+                </ListGroup>
+              ))}
+            </div>
+          </Container>
+        );
     }
 }
 
